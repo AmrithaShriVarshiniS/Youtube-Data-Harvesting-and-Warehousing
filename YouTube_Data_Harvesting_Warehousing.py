@@ -12,7 +12,7 @@ pd.set_option('display.max_columns', None)
 
 # --------------Data Retrieving from youtube ---------------
 
-# channel data retrive from youtube
+# channel data retrieve from youtube
 def get_channel_details(youtube, channel_id):
     request = youtube.channels().list(
         part='contentDetails, snippet, statistics, status',
@@ -29,7 +29,7 @@ def get_channel_details(youtube, channel_id):
     return data
 
 
-# playlist data retrive from youtube
+# playlist data retrieve from YouTube
 def get_total_playlists(youtube, channel_id, upload_id):
     request = youtube.playlists().list(
         part="snippet,contentDetails,status",
@@ -75,7 +75,7 @@ def get_total_playlists(youtube, channel_id, upload_id):
     return playlists
 
 
-# video ids retrive from youtube
+# video ids retrieve from youtube
 def get_total_video_ids(youtube, upload_id):
     request = youtube.playlistItems().list(
         part='contentDetails',
@@ -110,7 +110,7 @@ def get_total_video_ids(youtube, upload_id):
     return list_video_ids
 
 
-# video details retrive from youtube
+# video details retrieve from YouTube
 def get_video_details(youtube, video_id, upload_id):
     request = youtube.videos().list(
         part='contentDetails, snippet, statistics',
@@ -144,7 +144,7 @@ def get_video_details(youtube, video_id, upload_id):
     return data
 
 
-# comment details retrive from youtube
+# comment details retrieve from youtube
 def get_comments_details(youtube, video_id):
     request = youtube.commentThreads().list(
         part='id, snippet',
@@ -257,7 +257,7 @@ def data_store_mongodb(channel_name, database, data_youtube):
     col.insert_one(data_youtube)
 
 
-# temporary database to store retrive data and finally automatically drop
+# temporary database to store retrieve data and finally automatically drop
 def temp_collection_drop():
     amri = pymongo.MongoClient(
         "mongodb://127.0.0.1:27017/")
